@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2021-11-20--01--init-db-schema.xml" author="Celestial_Shepherd">
+
+        <createTable tableName="location">
+            <column name="id" type="UUID" defaultValueComputed="${uuid_function}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="region" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="town" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="district" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="dtp">
+            <column name="id" type="UUID" defaultValueComputed="${uuid_function}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="driver_license" type="VARCHAR(9)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location_id" type="uuid">
+                <constraints foreignKeyName="fk_location_id" nullable="true" references="location(id)"/>
+            </column>
+            <column name="time_of_dtp" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="punishment" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="penalty" type="DOUBLE PRECISION">
+                <constraints nullable="true"/>
+            </column>
+            <column name="period" type="INT">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>
+

@@ -1,1 +1,1 @@
-web: java -jar gradle/wrapper/grade-wrapper.jar
+web: java $JAVA_OPTS -cp target/classes:target/dependency/*com.example.dtp

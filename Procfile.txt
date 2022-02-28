@@ -1,0 +1,1 @@
+web: java -jar gradle/wrapper/grade-wrapper.jar

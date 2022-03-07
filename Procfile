@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/*com.example.dtp
+web: java -Dgrails.env=$ENV -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/*.jar
